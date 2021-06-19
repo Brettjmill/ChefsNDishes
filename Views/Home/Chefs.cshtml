@@ -1,0 +1,27 @@
+@model List<Chef>
+
+<h1>Check out our roster of Chefs!</h1>
+<br>
+<a href="/new">Add a Chef</a>
+<hr>
+<div>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <td>Name</td>
+                <td>Age</td>
+                <td># of Dishes</td>
+            </tr>
+        </thead>
+        <tbody class="table-striped">
+        @foreach(Chef chef in Model)
+        {
+            <tr>
+                <td>@chef.FirstName @chef.LastName</td>
+                <td>@((Int32)((DateTime.Now.Subtract(chef.DateOfBirth).TotalDays)/365))</td>
+                <td>@chef.CreatedDishes.Count</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
